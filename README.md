@@ -31,9 +31,10 @@ python main.py
 
 ## Demo
 ### 原始截图
-![alt](demo/demo.png)
+<img src="https://github.com/JoJoJoJoJoJoJo/screen_capture_ocr/blob/main/demo/demo.png"/>
+
 ### 识别结果
-![alt](demo/demo_result.png)
+<img src="https://github.com/JoJoJoJoJoJoJo/screen_capture_ocr/blob/main/demo/demo_result.png"/>
 
 红色框体表示OCR区域，在上面点击即可显示识别结果（白底红字）并自动复制
 
