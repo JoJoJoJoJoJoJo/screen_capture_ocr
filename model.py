@@ -1,13 +1,11 @@
 from config import *
 from crnn import CRNNHandle
 from angnet import  AngleNetHandle
-from utils import draw_bbox, crop_rect, sorted_boxes, get_rotate_crop_image
+from utils import sorted_boxes, get_rotate_crop_image
 from PIL import Image
 import numpy as np
-import cv2
 import copy
 from dbnet.dbnet_infer import DBNET
-import time
 import traceback
 
 class  OcrHandle(object):
@@ -68,7 +66,7 @@ class  OcrHandle(object):
                 continue
 
             if simPred.strip() != '':
-                results.append([tmp_box,"{}、 ".format(count)+  simPred,score])
+                results.append([tmp_box, simPred, score])
                 count += 1
 
         return results

@@ -1,63 +1,49 @@
-# chineseocr_lite 的 onnx 推理, 部署简单
+# 截图并自动识别文字的OCR工具
 
-## 原始项目分支（torch推理，ncnn推理等）：[master](https://github.com/ouyanghuiyu/chineseocr_lite/tree/master)
+## OCR调用来自项目[chineseocr_lite](https://github.com/DayBreak-u/chineseocr_lite)
 
 ## 环境
-- python3.6
+- python3.7
 
-- linux/macos/windows
+- windows
 
-## web服务启动
-``` Bash
-cd chineseocr_lite## 进入chineseocr目录
-python backend/main.py 
+## 使用方法
+1. 克隆代码
+```commandline
+git clone https://github.com/JoJoJoJoJoJoJo/screen_capture_ocr.git
 ```
-## 在线演示地址: [chineseocr_lite](http://ocrlite.cnocrlite.com/)
 
+2. 设置截图快捷键(默认为ALT-SHIFT-P)
 
-## 识别结果展示
-![avatar](test_imgs/res.jpg)
-![avatar](test_imgs/res_2.jpg)
+打开目录，编辑config.py `SCREEN_CAPTURE_KEY`
 
-## 参考
-1. TrWebOCR https://github.com/alisen39/TrWebOCR         
+3. 安装依赖
+```commandline
+pip install -r requirements.txt
+```
 
-## QQ群
-185905924
+4. 启动
+```commandline
+python main.py
+```
 
-### 以下范例项目是参考Python代码翻译为各种语言的Demo，仅供参考
-** 注意：以下各种demo均相互独立，只是同一个程序的不同版本 **
-#### **如果不想自己整合依赖库的话，以下demo的完整源码工程项目，请到Q群共享里自行下载**
-#### [C++ Demo](https://github.com/ouyanghuiyu/chineseocr_lite/tree/onnx/cpp_projects)
-* onnxruntime C++ demo，支持Windows、linux、macOS，目前仅支持cpu计算；
-* ncnn C++ demo，支持Windows、linux、macOS，分为cpu版与gpu版，gpu版使用ncnn+vulkan来支持gpu加速；
-* MNN C++ demo, 支持 windows、linux、macOs，目前仅支持cpu计算；
+5. 使用快捷键截图并自动识别，识别结果上点击即可自动复制识别文字
 
-#### [Jvm Demo](https://github.com/ouyanghuiyu/chineseocr_lite/tree/onnx/jvm_projects)
-* onnxruntime jvm demo: 以onnxruntime C++为基础，编译成jni供java或kotlin调用；
-* ncnn jvm demo: 以ncnn C++为基础，编译成jni供java或kotlin调用，同样分为cpu版与gpu版；
+## Demo
+### 原始截图
+![alt](demo/demo.png)
+### 识别结果
+![alt](demo/demo_result.png)
 
-#### [Android Demo](https://github.com/ouyanghuiyu/chineseocr_lite/tree/onnx/android_projects)
-* onnxruntime android demo: 以onnxruntime C++为基础，整合为一个独立的android模块供app调用；
-* ncnn jvm android demo: 以ncnn C++为基础，整合为一个独立的android模块供app调用，同样分为cpu版与gpu版；
-* MNN android demo: 以MNN C++为基础，整合为一个独立的android模块供app调用，支持cpu版本
+红色框体表示OCR区域，在上面点击即可显示识别结果（白底红字）并自动复制
 
-#### [.Net Demo](https://github.com/ouyanghuiyu/chineseocr_lite/tree/onnx/dotnet_projects)
-* onnxruntime c# demo:  完全以C#编写的onnxruntime demo;
-* onnxruntime vb.net demo: 完全以VB编写的onnxruntime demo;
+（此处应有gif）
 
-#### 第三方Demo
-* [TNN中文字符ocr](https://github.com/Tencent/TNN/#effect-example): 根据本项目，基于TNN实现的轻量级中文字符ocr demo，支持iOS和Android系统，凭借TNN优化的CPU(ARMv7、ARMv8)和GPU(OpenCL、Metal)后端加速模型计算。
+## 已知的问题
+* 需要TK窗口获得焦点才能监听到快捷键
 
-### Android识别展示
-![avatar](test_imgs/android/detect_IMEI.gif)
-![avatar](test_imgs/android/detect_id_card.gif)
-![avatar](test_imgs/android/detect_plate.gif)
-
-### .NetDemo识别展示
-![avatar](test_imgs/dotnet/OcrLiteOnnxCs.PNG)
-
-### 第三方 TNN Demo识别展示
-[![avatar](test_imgs/third_party/tnn_detect_camera.gif)](https://github.com/Tencent/TNN/#effect-example)
-[![avatar](test_imgs/third_party/tnn_detect_poster1.png)](https://github.com/Tencent/TNN/#effect-example)
-[![avatar](test_imgs/third_party/tnn_detect_poster2.png)](https://github.com/Tencent/TNN/#effect-example)
+## TODO
+- [ ] 最小化托盘运行， 快捷键唤醒
+- [ ] linux / macos 系统支持
+- [ ] 提高识别精度
+- [ ] Release安装包
